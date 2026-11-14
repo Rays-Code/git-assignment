@@ -1,0 +1,141 @@
+GIT COMMANDS USED IN THIS ASSIGNMENT
+Repository: https://github.com/Rays-Code/git-assignment
+
+SETUP
+
+git --version
+  Shows the installed Git version to confirm Git is installed.
+
+git config --global user.name "Dipraj"
+  Sets the author name attached to every commit.
+
+git config --global user.email "raydipraj1234@gmail.com"
+  Sets the author email attached to every commit.
+
+STEP 1: LOCAL REPOSITORY SETUP
+
+mkdir git-assignment
+  Creates the project folder.
+
+cd git-assignment
+  Moves into the project folder.
+
+git init -b main
+  Initializes a new Git repository with "main" as the default branch.
+
+echo "<html>...</html>" > index.html
+echo "<html>...</html>" > about.html
+  Creates the two HTML files with starter content.
+
+ls
+  Lists the files in the folder to confirm both HTML files exist.
+
+STEP 2: GIT WORKFLOW
+
+git status
+  Shows modified, staged, and untracked files.
+
+git add .
+  Stages all changes in the folder for the next commit.
+
+git commit -m "Initial commit: add index.html and about.html"
+  Saves the staged files as the first commit.
+
+echo "<p>Welcome to my website</p>" >> index.html
+  Appends a line to index.html to modify it.
+
+git add index.html
+  Stages only index.html.
+
+git commit -m "Update index.html with welcome message"
+  Saves the modification as the second commit.
+
+git branch feature
+  Creates a new branch named feature.
+
+git switch feature
+  Switches to the feature branch.
+
+git branch
+  Lists local branches and marks the current one with *.
+
+echo "<p>This site was built by Dipraj</p>" >> about.html
+  Appends a line to about.html on the feature branch.
+
+git add about.html
+  Stages about.html.
+
+git commit -m "Add author info to about.html on feature branch"
+  Commits the change to the feature branch.
+
+git switch main
+  Switches back to the main branch.
+
+git merge feature --no-ff -m "Merge feature branch into main"
+  Merges feature into main and always creates a merge commit so the branch activity is visible.
+
+git log --oneline --graph --all --decorate
+  Shows a compact commit history with a branch graph.
+
+STEP 3: .gitignore
+
+printf "*.log\ntemp/\n" > .gitignore
+  Creates .gitignore to ignore all .log files and the temp/ folder.
+
+mkdir temp
+  Creates the temp folder used to test .gitignore.
+
+echo "test" > temp/data.txt
+echo "log entry" > debug.log
+  Creates sample files that should be ignored by Git.
+
+cat .gitignore
+  Prints the contents of .gitignore.
+
+git add .gitignore
+  Stages the .gitignore file.
+
+git commit -m "Add .gitignore for .log files and temp folder"
+  Commits the .gitignore file.
+
+STEP 4: UNDO OPERATION
+
+echo "<p>Temporary change</p>" >> index.html
+  Appends a temporary line to index.html.
+
+git add index.html
+  Stages the temporary change.
+
+git commit -m "Temporary commit to be undone"
+  Creates the additional commit that will be undone.
+
+git log --oneline
+  Shows a short one-line-per-commit history (used before and after the undo).
+
+git reset --hard HEAD~1
+  Undoes the last commit and discards its changes from the working directory.
+
+STEP 5: GITHUB INTEGRATION
+
+git remote add origin https://github.com/Rays-Code/git-assignment.git
+  Links the local repository to the public GitHub repository.
+
+git remote -v
+  Shows the configured remote URLs.
+
+git push -u origin main
+  Pushes the main branch to GitHub and sets it as the upstream branch.
+
+git push origin feature
+  Pushes the feature branch to GitHub.
+
+STEP 6: DOCUMENTATION FILE
+
+git add git_commands.txt
+  Stages the git_commands.txt file.
+
+git commit -m "Add git_commands.txt documenting all commands"
+  Commits the command documentation file.
+
+git push origin main
+  Pushes the final commit to GitHub.
